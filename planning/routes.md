@@ -38,7 +38,7 @@ BREAD | Type | Route | Description
 ------|------|------|------|
 BROWSE | GET |  /points/:map_id  | Show all points on a map
 ADD | POST |  /points/  | Add points to a map
-EDIT | POST | /points/:id | Edit a point on a map
+EDIT | POST | /points/:point_id | Edit a point on a map
 DELETE | POST |/points/:point_id/delete   | Delete point from a map
 
 **COMMENTS**
@@ -46,5 +46,5 @@ BREAD | Type | Route | Description
 ------|------|------|------|
 BROWSE | GET |  /comments/:point_id  | Show all comments for a point
 ADD | POST |  /comments/  | Add comments to a point
-EDIT | POST | /comments/:id | Edit a comment for a point
+EDIT | POST | /comments/:comment_id | Edit a comment for a point
 DELETE | POST |/comments/:point_id/delete   | Delete a comment from a point
