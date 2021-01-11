@@ -1,4 +1,4 @@
-INSERT INTO points (title, description, image_url, longitude, latitude, type, rating, map_id)
+INSERT INTO points (title, description, image_url, latitude, longitude, type, rating, map_id)
 VALUES ('Ferris Grill & Garden Patio', 'this quaint seafood spot offers a changing menu', 'https://lh5.googleusercontent.com/p/AF1QipN0qJwDuQi2FSeNICyhcc3JbxCNbkj-7hsGO_a4=w426-h240-k-no', 48.426949, -123.369052, 'restuarant', 2, 9),
 ('The Joint Pizzeria', 'Pizza Restuarant', 'https://lh5.googleusercontent.com/p/AF1QipPMYCn3frMm1NroRl6nxSIUR-EUVxNgdRE-KbNH=w426-h240-k-no', 48.426580, -123.370036, 'restuarant', 4, 10),
 ('Second Cup Coffee Co.', 'Coffee Shop', 'https://lh5.googleusercontent.com/p/AF1QipMSrjWczuBAwxRHLkBp8YJi7ldgBqu-4lST7WEs=w408-h544-k-no', 45.424909, -75.684365, 'coffee shop', 5, 2),

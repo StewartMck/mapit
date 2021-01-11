@@ -9,9 +9,34 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- Google Maps API Implementation -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwBh1mc7z9PMYG8UVzmyJm1kIFuKK1uQ&libraries=&v=weekly"
+      defer
+    ></script>
+    <script type="text/javascript" src="/scripts/load_map.js"></script>
+
+    <!-- Testing Google Maps API -->
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <h1>My Map</h1>
+    <div id="map"></div>
   </body>
 </html>
