@@ -9,18 +9,26 @@ $(() => {
       document.getElementById(htmlElement),
       options
     );
-    // map.addListener("bounds_changed", () => {
-    //   console.log(JSON.stringify(map.getCenter()));
-    // });
+    // creating a new Point (null is passed in because there is no db entry)
+    map.addListener("click", (event) => {
+      window.addPoint(null, event.latLng, map);
+    });
     return map;
   };
 
-  const showPoint = function (point, googleMap) {
-    new google.maps.Marker({
-      position: new google.maps.LatLng(point.latitude, point.longitude),
-      map: googleMap,
-      title: point.title,
-    });
+  const showPoint = function (dbPoint, googleMap) {
+    // const marker = new google.maps.Marker({
+    //   position: new google.maps.LatLng(point.latitude, point.longitude),
+    //   map: googleMap,
+    //   animation: google.maps.Animation.DROP,
+    //   title: point.title,
+    // });
+    // add marker function
+    window.addPoint(
+      dbPoint,
+      new google.maps.LatLng(dbPoint.latitude, dbPoint.longitude),
+      googleMap
+    );
   };
 
   const getPoints = function (googleMap, mapID) {
