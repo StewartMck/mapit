@@ -1,20 +1,25 @@
-/*global $, google, document*/
+/*global $, google, document, window*/
 
 $(() => {
   const htmlElement = "map";
   const mapID = 9;
 
   const initMap = function (options) {
-    return new google.maps.Map(document.getElementById(htmlElement), options);
+    const map = new google.maps.Map(
+      document.getElementById(htmlElement),
+      options
+    );
+    // map.addListener("bounds_changed", () => {
+    //   console.log(JSON.stringify(map.getCenter()));
+    // });
+    return map;
   };
 
   const showPoint = function (point, googleMap) {
-    console.log("point", point);
-    console.log("googleMap", googleMap);
     new google.maps.Marker({
       position: new google.maps.LatLng(point.latitude, point.longitude),
       map: googleMap,
-      title: "my point",
+      title: point.title,
     });
   };
 
@@ -40,12 +45,14 @@ $(() => {
       method: "GET",
     })
       .then((response) => {
-        const map = response.maps[0];
+        const dbMap = response.maps[0];
         const googleMap = initMap({
-          center: new google.maps.LatLng(map.center_lat, map.center_long),
-          zoom: map.zoom,
-          mapTypeID: map.type,
+          center: new google.maps.LatLng(dbMap.center_lat, dbMap.center_long),
+          zoom: dbMap.zoom,
+          mapTypeId: dbMap.type,
         });
+        // make map available globally
+        window.googleMap = googleMap;
         getPoints(googleMap, mapID);
       })
       .catch((err) => {
