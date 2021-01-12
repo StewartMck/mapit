@@ -50,7 +50,28 @@ app.use("/api/comments", commentRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("map");
+  // const userID = req.session.user_id;
+
+  // if (!userID) {
+  //   res.render("/index_landing");
+  //   return;
+  // }
+
+  res.render("index");
+});
+
+
+//Will uncomment these later for setting up user cookies
+//need to install cookie-session
+// app.get('/login/:id', (req, res) => {
+//   req.session.user_id = req.params.id;
+//   res.redirect('/');
+// });
+
+app.get("/users/:email", (req, res) => {
+  const userEmail = req.params.email
+  const templateVars = { userEmail }
+  res.render("user", templateVars);
 });
 
 app.listen(PORT, () => {

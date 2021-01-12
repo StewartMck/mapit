@@ -24,6 +24,9 @@
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/load_map.js"></script>
+  <script type="text/javascript" src="/scripts/save_map.js"></script>
+  <script type="text/javascript" src="/scripts/add_point.js"></script>
+  <script type="text/javascript" src="/scripts/create_map.js"></script>
 
   <!-- Testing Google Maps API -->
 
@@ -39,7 +42,8 @@
       </div>
       <div>
         <input type="text" placeholder="Search..">
-
+        <button id="save_map">SAVE MAP</button>
+        <button id="create_map">CREATE MAP</button>
       </div>
 
       <div id="map">
@@ -53,13 +57,11 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Created</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="maps">
           <tr>
             <td>Places to go</td>
-            <td>Khanduulga</td>
           </tr>
         </tbody>
       </table>
