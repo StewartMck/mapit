@@ -2,7 +2,7 @@
 
 $(() => {
   const htmlElement = "map";
-  const mapID = 9;
+  const mapID = 1;
 
   const initMap = function (options) {
     return new google.maps.Map(document.getElementById(htmlElement), options);

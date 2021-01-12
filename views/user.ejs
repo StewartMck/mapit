@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Information -->
+  <title>Home Page</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+  <!-- Fonts -->
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/user.css" type="text/css" />
+
+  <!-- External JS (Google Maps API)-->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwBh1mc7z9PMYG8UVzmyJm1kIFuKK1uQ&libraries=&v=weekly"
+      defer>
+  </script>
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Testing Google Maps API -->
+
+
+</head>
+<body>
+  <main class="container">
+    <div class="top">
+      <div class="user">
+        <div>
+          <header>
+              <h1>User Name</h1>
+          </header>
+        </div>
+        <div>
+          <p>User info, name, email</p>
+        </div>
+      </div>
+
+      <div class="create">
+        <form action="">
+          <input type="submit" value="Create a new map" />
+        </form>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <h3>Maps List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Created by</th>
+            <th scope="col">Favorited</th>
+            <th scope="col">Contributed</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Places to go</td>
+            <td>Khanduulga</td>
+            <td>Yes</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+
+
+
+</body>
+</html>
