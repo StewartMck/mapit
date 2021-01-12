@@ -2,6 +2,7 @@
 
 $(() => {
   const htmlElement = "map";
+  const mapID = 1;
 
   // creates a map
   const initMap = function (options) {
