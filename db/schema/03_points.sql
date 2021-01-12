@@ -4,7 +4,6 @@ CREATE TABLE points (
 id SERIAL PRIMARY KEY NOT NULL,
 title VARCHAR(255) NOT NULL,
 description TEXT,
-image_url VARCHAR(500) NOT NULL,
 longitude FLOAT(6) NOT NULL,
 latitude FLOAT(6) NOT NULL,
 type VARCHAR(30),

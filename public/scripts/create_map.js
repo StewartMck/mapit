@@ -70,5 +70,3 @@ $(() => {
     getGeoLocation();
   });
 });
-
-// const newMapID = window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1;

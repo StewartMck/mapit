@@ -1,11 +1,11 @@
-INSERT INTO points (title, description, image_url, latitude, longitude, type, rating, map_id)
-VALUES ('Ferris Grill & Garden Patio', 'this quaint seafood spot offers a changing menu', 'https://lh5.googleusercontent.com/p/AF1QipN0qJwDuQi2FSeNICyhcc3JbxCNbkj-7hsGO_a4=w426-h240-k-no', 48.426949, -123.369052, 'restuarant', 2, 9),
-('The Joint Pizzeria', 'Pizza Restuarant', 'https://lh5.googleusercontent.com/p/AF1QipPMYCn3frMm1NroRl6nxSIUR-EUVxNgdRE-KbNH=w426-h240-k-no', 48.426580, -123.370036, 'restuarant', 4, 10),
-('Second Cup Coffee Co.', 'Coffee Shop', 'https://lh5.googleusercontent.com/p/AF1QipMSrjWczuBAwxRHLkBp8YJi7ldgBqu-4lST7WEs=w408-h544-k-no', 45.424909, -75.684365, 'coffee shop', 5, 2),
-('St. Josephs Hospital', 'General Hospital', 'https://lh5.googleusercontent.com/p/AF1QipOty4clpYAI2u-w5NpE-utDtyX2MGEhx3Y0pUJj=w408-h306-k-no', 43.003395, -81.255063, 'hospital', 5, 4),
-('The Home Depot', 'Home Improvement', 'https://lh5.googleusercontent.com/p/AF1QipPxW-D9glQItciPwXNp9D2YSAeMCJmA_Nx2Sckf=w408-h306-k-no', 43.037301, -81.258502, 'home improvement', 5, 4),
-('point1', 'house', 'https://www.google.ca/maps/place/298+Smith+St,+Regina,+SK+S4R+2K7/@50.4740745,-104.6151831,3a,75y,275.3h,90t/data=!3m7!1e1!3m5!1sh6j5ZxcCFk2e-V8piwLncQ!2e0!6s%2F%2Fgeo2.ggpht.com%2Fcbk%3Fpanoid%3Dh6j5ZxcCFk2e-V8piwLncQ%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D275.3046%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656!4m5!3m4!1s0x531c1efbad43c111:0x9a26f1ae8677922e!8m2!3d50.4740893!4d-104.6155455',50.474084, -104.615534, 'house', 2, 6),
-('Made By Marcus- Whyte Ave', 'Ice Cream Shop', 'https://lh5.googleusercontent.com/p/AF1QipPwuaOofyn38TOs9GhkHP77_HkJebDWsB7K4moc=w408-h306-k-no', 53.518328, -113.498671, 'Ice Cream', 5, 8),
-('Situation Brewing', 'Brewery', 'https://lh5.googleusercontent.com/p/AF1QipO7SPfLUbcibEN88sXGwD39BiiiAYvD4R2tBtyC=w408-h544-k-no', 53.517271, -113.495033, 'Brewery', 4, 8),
-('Stanley Park Brewing Restaurant & Brewpub', 'Brewpub', 'https://lh5.googleusercontent.com/p/AF1QipPpnNFnQB9VoyQChYd39LZeXaQ8zIDUUHtOHqGt=w408-h272-k-no', 49.292455, -123.146455, 'Pub', 3, 9),
-('Ted and Mary Greig Rhododendron Garden', 'Garden', 'https://lh5.googleusercontent.com/p/AF1QipPY7kuJamZDBu51PuHEgqtEjCBLiCgNzv7lLtM=w408-h306-k-no', 49.293481, -123.142767, 'Garden', 1, 9);
+INSERT INTO points (title, description, latitude, longitude, type, rating, map_id)
+VALUES ('Ferris Grill & Garden Patio', 'this quaint seafood spot offers a changing menu', 48.426949, -123.369052, 'restuarant', 2, 9),
+('The Joint Pizzeria', 'Pizza Restuarant', 48.426580, -123.370036, 'restuarant', 4, 10),
+('Second Cup Coffee Co.', 'Coffee Shop', 45.424909, -75.684365, 'coffee shop', 5, 2),
+('St. Josephs Hospital', 'General Hospital', 43.003395, -81.255063, 'hospital', 5, 4),
+('The Home Depot', 'Home Improvement', 43.037301, -81.258502, 'home improvement', 5, 4),
+('point1', 'house',50.474084, -104.615534, 'house', 2, 6),
+('Made By Marcus- Whyte Ave', 'Ice Cream Shop', 53.518328, -113.498671, 'Ice Cream', 5, 8),
+('Situation Brewing', 'Brewery',  53.517271, -113.495033, 'Brewery', 4, 8),
+('Stanley Park Brewing Restaurant & Brewpub', 'Brewpub', 49.292455, -123.146455, 'Pub', 3, 9),
+('Ted and Mary Greig Rhododendron Garden', 'Garden', 49.293481, -123.142767, 'Garden', 1, 9);

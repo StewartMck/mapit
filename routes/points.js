@@ -23,8 +23,8 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     let queryString = `
-    INSERT INTO points(title, description, image_url, longitude, latitude, type, rating, map_id)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+    INSERT INTO points(title, description, longitude, latitude, type, rating, map_id)
+    VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING *`;
     const queryParams = Object.values(req.body);
     db.query(queryString, queryParams)
@@ -40,8 +40,8 @@ module.exports = (db) => {
   router.post("/:point_id", (req, res) => {
     let queryString = `
     UPDATE points
-    SET title = $1, description = $2, image_url = $3, type = $4, rating = $5
-    WHERE points.id = $6
+    SET title = $1, description = $2, type = $3, rating = $4
+    WHERE points.id = $5
     RETURNING *`;
     const queryParams = Object.values(req.body);
     queryParams.push(req.params.point_id);
