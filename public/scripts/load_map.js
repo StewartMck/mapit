@@ -42,7 +42,7 @@ $(() => {
       });
   };
 
-  // Gets the Map using MAP ID
+  // Gets the Map using MAP ID and calls the initMap (create map) function with values from DB
   const getMap = function (mapID) {
     $.ajax({
       url: `/api/maps/${mapID}`,
@@ -54,11 +54,12 @@ $(() => {
           center: new google.maps.LatLng(dbMap.center_lat, dbMap.center_long),
           zoom: dbMap.zoom,
           mapTypeId: dbMap.type,
-          MapID: mapID,
+          // attaches mapID to googleMap obj for use in app
+          mapID: mapID,
         });
         // make map available globally
         window.googleMap = googleMap;
-        console.log("mapID", mapID);
+        console.log("Current mapID", mapID);
         getPoints(googleMap, mapID);
       })
       .catch((err) => {

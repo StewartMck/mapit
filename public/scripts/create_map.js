@@ -15,17 +15,19 @@ $(() => {
     });
     // make map available globally
     window.googleMap = map;
+    console.log("NEW MAP: Current mapID", window.googleMap.mapID);
     return map;
   };
 
   // navigator api takes in success, error, options
-  // if success buildUserMap, otherwise console log error, else buildDefaultMap with timeout of 60 sec
+  // if success buildUserMap, otherwise console log error and buildDefault, else buildDefaultMap with timeout of 60 sec
   const getGeoLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         buildUserMap,
         (error) => {
           console.log(error);
+          buildDefaultMap();
         },
         { timeout: 60000 }
       );
@@ -35,6 +37,7 @@ $(() => {
   };
 
   // builds a map & centers around user location with temporary marker
+  /* mapID = checks global maps obj (app.js) for last id and uses the next one as the new maps id */
   const buildUserMap = function (position) {
     const homeCoords = new google.maps.LatLng(
       position.coords.latitude,
@@ -44,6 +47,7 @@ $(() => {
       center: homeCoords,
       zoom: 16,
       mapTypeId: "roadmap",
+      mapID: window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1,
     });
     const infoWindow = new google.maps.InfoWindow();
     infoWindow.setPosition(homeCoords);
@@ -55,8 +59,9 @@ $(() => {
   const buildDefaultMap = function () {
     initMap({
       center: new google.maps.LatLng(32.155573819618716, -110.82893675561328),
-      zoom: 13,
+      zoom: 16,
       mapTypeId: "satellite",
+      mapID: window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1,
     });
   };
 
@@ -65,3 +70,5 @@ $(() => {
     getGeoLocation();
   });
 });
+
+// const newMapID = window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1;
