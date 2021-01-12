@@ -14,6 +14,7 @@ $(() => {
       showMarkerInfo(dbPoint).open(window.googleMap, point);
     });
     points.push(point);
+    window.points = points;
   };
 
   const populateMarkerInfo = function (dbPoint) {
@@ -44,5 +45,4 @@ $(() => {
   };
 
   window.addPoint = addPoint;
-  window.points = points;
 });

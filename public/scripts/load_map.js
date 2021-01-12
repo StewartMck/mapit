@@ -44,6 +44,10 @@ $(() => {
 
   // Gets the Map using MAP ID and calls the initMap (create map) function with values from DB
   const getMap = function (mapID) {
+    // clear points in mem otherwise points from previous session will be save to current map
+    if (window.points) {
+      window.points = [];
+    }
     $.ajax({
       url: `/api/maps/${mapID}`,
       method: "GET",

@@ -42,7 +42,6 @@ $(() => {
 
   // save points to DB, makes sure map_id is a number
   const savePoints = function (pointData) {
-    console.log("mapId for points:", Number(window.googleMap.mapID));
     $.ajax({
       url: "/api/points/",
       dataType: "text",
