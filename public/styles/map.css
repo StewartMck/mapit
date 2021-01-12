@@ -1,0 +1,75 @@
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  background-color: rgb(180, 190, 36);
+}
+
+.left {
+  height: 100%;
+  width: 100%;
+  background: aqua;
+  margin-right: 30%;
+}
+
+.appName {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.mapName header h1 {
+  height: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.right {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 30%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  top: 0; /* Stay at the top */
+  right: 0;
+  /* background-color: rgb(128, 54, 54); Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  background: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#map {
+  height: 85%;
+}
+
+/* .table {
+  border: 1px solid black;
+} */
+
+table, th, td {
+  border: 1px solid black;
+  width: 80%;
+}
+
+.left input[type=text] {
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
