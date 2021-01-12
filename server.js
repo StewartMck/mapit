@@ -50,7 +50,7 @@ app.use("/api/comments", commentRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("user");
+  res.render("map");
 });
 
 app.listen(PORT, () => {
