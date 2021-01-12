@@ -2,8 +2,8 @@
 
 $(() => {
   const htmlElement = "map";
-  const mapID = 9;
 
+  // creates a map
   const initMap = function (options) {
     const map = new google.maps.Map(
       document.getElementById(htmlElement),
@@ -16,14 +16,8 @@ $(() => {
     return map;
   };
 
+  // populates the maps with points from the DB
   const showPoint = function (dbPoint, googleMap) {
-    // const marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(point.latitude, point.longitude),
-    //   map: googleMap,
-    //   animation: google.maps.Animation.DROP,
-    //   title: point.title,
-    // });
-    // add marker function
     window.addPoint(
       dbPoint,
       new google.maps.LatLng(dbPoint.latitude, dbPoint.longitude),
@@ -31,6 +25,7 @@ $(() => {
     );
   };
 
+  // gets points from DB using the MAP ID
   const getPoints = function (googleMap, mapID) {
     $.ajax({
       url: `/api/points/${mapID}`,
@@ -47,6 +42,7 @@ $(() => {
       });
   };
 
+  // Gets the Map using MAP ID
   const getMap = function (mapID) {
     $.ajax({
       url: `/api/maps/${mapID}`,
@@ -58,9 +54,11 @@ $(() => {
           center: new google.maps.LatLng(dbMap.center_lat, dbMap.center_long),
           zoom: dbMap.zoom,
           mapTypeId: dbMap.type,
+          MapID: mapID,
         });
         // make map available globally
         window.googleMap = googleMap;
+        console.log("mapID", mapID);
         getPoints(googleMap, mapID);
       })
       .catch((err) => {
@@ -68,5 +66,5 @@ $(() => {
       });
   };
 
-  getMap(mapID);
+  window.getMap = getMap;
 });
