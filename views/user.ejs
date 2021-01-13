@@ -23,6 +23,10 @@
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/load_map.js"></script>
+  <script type="text/javascript" src="/scripts/save_map.js"></script>
+  <script type="text/javascript" src="/scripts/add_point.js"></script>
+  <script type="text/javascript" src="/scripts/create_map.js"></script>
 
   <!-- Testing Google Maps API -->
 
@@ -34,16 +38,16 @@
       <div class="user">
         <div>
           <header>
-              <h1>User Name</h1>
+              <h1> <%= first_name %>  <%= last_name %></h1>
           </header>
         </div>
         <div>
-          <p>User info, name, email</p>
+          <p>User info: <%= email %></p>
         </div>
       </div>
 
       <div class="create">
-        <form action="">
+        <form action="/">
           <input type="submit" value="Create a new map" />
         </form>
       </div>
@@ -55,22 +59,16 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Created by</th>
-            <th scope="col">Favorited</th>
-            <th scope="col">Contributed</th>
-
-
+            <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Places to go</td>
-            <td>Khanduulga</td>
-            <td>Yes</td>
-            <td>No</td>
-          </tr>
+        <tbody id="maps">
+
         </tbody>
       </table>
+    </div>
+    <div id="map">
+
     </div>
   </main>
 
