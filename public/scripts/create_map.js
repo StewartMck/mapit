@@ -37,6 +37,7 @@ $(() => {
         zoom: 16,
         mapTypeId: "roadmap",
         mapID: mapID ? mapID : 1,
+        userCreated: true,
       });
       console.log("NEW MAP: Current mapID", window.googleMap.mapID);
       const infoWindow = new google.maps.InfoWindow();
