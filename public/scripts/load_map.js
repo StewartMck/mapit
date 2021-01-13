@@ -81,6 +81,7 @@ $(() => {
     })
       .then((response) => {
         const dbMap = response.maps[0];
+        $("#title").text(dbMap.name);
         const googleMap = initMap({
           center: new google.maps.LatLng(dbMap.center_lat, dbMap.center_long),
           zoom: dbMap.zoom,
