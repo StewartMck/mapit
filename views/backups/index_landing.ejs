@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
-    <title>Home Page</title>
+    <title>MapIT</title>
 
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -11,7 +11,7 @@
     <!-- Fonts -->
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/user.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/landing.css" type="text/css" />
 
     <!-- External JS (Google Maps API)-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -27,44 +27,36 @@
     <script type="text/javascript" src="/scripts/save_map.js"></script>
     <script type="text/javascript" src="/scripts/add_point.js"></script>
     <script type="text/javascript" src="/scripts/create_map.js"></script>
-    <script type="text/javascript" src="/scripts/delete_point.js"></script>
 
     <!-- Testing Google Maps API -->
   </head>
   <body>
     <main class="container">
-      <div class="top">
-        <div class="user">
-          <div>
-            <header>
-              <h1><%= first_name %> <%= last_name %></h1>
-            </header>
-          </div>
-          <div>
-            <p>User info: <%= email %></p>
-          </div>
+      <div class="left">
+        <div class="appName">
+          <header>
+            <h1>Maps</h1>
+          </header>
         </div>
 
-        <div class="create">
-          <form action="/">
-            <input type="submit" value="Create a new map" />
-          </form>
-        </div>
+        <div id="map"></div>
       </div>
 
-      <div class="bottom">
+      <div class="right">
         <h3>Maps List</h3>
         <table>
           <thead>
             <tr>
               <th scope="col">Name</th>
-              <th scope="col">Delete</th>
             </tr>
           </thead>
-          <tbody id="maps"></tbody>
+          <tbody id="maps">
+            <tr>
+              <td>Places to go</td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      <div id="map"></div>
     </main>
   </body>
 </html>

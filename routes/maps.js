@@ -20,6 +20,22 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/latest/map", (req, res) => {
+    let queryString = `
+    SELECT id
+    FROM maps
+    ORDER BY id DESC
+    LIMIT 1;`;
+    db.query(queryString)
+      .then((data) => {
+        const maps = data.rows[0];
+        res.json({ maps });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get("/", (req, res) => {
     let queryString = `
     SELECT *
@@ -34,6 +50,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
+
 
   router.post("/", (req, res) => {
     let queryString = `

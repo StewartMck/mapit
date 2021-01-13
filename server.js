@@ -9,8 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
-const cookieSession = require('cookie-session')
-
+const cookieSession = require("cookie-session");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -36,11 +35,13 @@ app.use(
 );
 app.use(express.static("public"));
 
-app.use(cookieSession({
-  name: "session",
-  keys: ["key1"],
-  secret: "You will never crack this"
-}));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"],
+    secret: "You will never crack this",
+  })
+);
 
 // Separated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -69,15 +70,14 @@ app.get("/", (req, res) => {
   res.render("map");
 });
 
-
 //login where it sets a cookie by user_id
-app.get('/login/:id', (req, res) => {
+app.get("/login/:id", (req, res) => {
   req.session.user_id = req.params.id;
-  res.redirect('/');
+  res.redirect("/");
 });
 
 app.get("/user", (req, res) => {
-  const userId = req.session.user_id
+  const userId = req.session.user_id;
 
   if (!userId) {
     res.render("/index_landing");
@@ -87,14 +87,13 @@ app.get("/user", (req, res) => {
   let queryString = `
   SELECT *
   FROM users
-  WHERE users.id = $1`
+  WHERE users.id = $1`;
   const queryParams = [userId];
-  db.query(queryString, queryParams)
-    .then((data) => {
-      const templateVars = data.rows[0];
-      console.log(templateVars);
-      res.render("user", templateVars);
-    })
+  db.query(queryString, queryParams).then((data) => {
+    const templateVars = data.rows[0];
+    console.log(templateVars);
+    res.render("user", templateVars);
+  });
 });
 
 // app.post("/api/maps/:map_id/delete", (req, res) => {

@@ -13,16 +13,20 @@ $(() => {
     }
     // make list of maps available globally
     window.mapsFromDB = maps;
-  });
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+
   //click listener on parent of map cells: table id="maps"
   $("#maps").click((event) => {
     // Match only numbers from id=map_xx & pass to load map function
     let mapID = event.target.id.match(/(\d+)/)[0];
 
-    if (event.target.id.includes('delete')) {
+    if (event.target.id.includes("delete")) {
       $.ajax({
         method: "POST",
-        url: `/api/maps/${mapID}/delete`
+        url: `/api/maps/${mapID}/delete`,
       }).then((deletedMap) => {
         $("#maps tr").remove();
         $.ajax({
@@ -38,24 +42,9 @@ $(() => {
           // make list of maps available globally
           window.mapsFromDB = maps;
         });
-      })
+      });
     }
 
-    // console.log(mapID)
     window.getMap(mapID);
   });
-
 });
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users",
-//   }).done((users) => {
-//     for (user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
-//     }
-//   });
-// });
-
-
-//<form method="POST" action="/api/maps/${map.id}/delete"> </form>

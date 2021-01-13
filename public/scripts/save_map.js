@@ -27,11 +27,14 @@ $(() => {
       data: mapData,
     })
       .then(() => {
-        for (let point of window.points) {
-          if (point.dbPoint) {
+        for (let point of Object.values(window.points)) {
+          console.log("points from object", point);
+          // if point exists update otherwise save new point
+          if (point.dbPoint && point.dbPoint.id) {
+            updatePoint(point);
             continue;
           } else {
-            savePoints(point);
+            savePoint(point);
           }
         }
       })
@@ -41,23 +44,45 @@ $(() => {
   };
 
   // save points to DB, makes sure map_id is a number
-  const savePoints = function (pointData) {
+  const savePoint = function (pointData) {
+    // You have to save point info otherwise save will fail
+    console.log("Points saved to: ", Number(window.googleMap.mapID));
     $.ajax({
       url: "/api/points/",
       dataType: "text",
       method: "POST",
       contentType: "application/x-www-form-urlencoded",
       data: {
-        title: "test-point",
-        description: "description",
+        title: pointData.dbPoint.title,
+        description: pointData.dbPoint.description,
         longitude: pointData.getPosition().lng(),
         latitude: pointData.getPosition().lat(),
         type: "point",
-        rating: "0",
+        rating: pointData.dbPoint.rating,
         map_id: Number(window.googleMap.mapID),
       },
     })
       .then(() => { })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  };
+
+  // Update point in DB
+  const updatePoint = function (pointData) {
+    $.ajax({
+      url: `/api/points/${pointData.dbPoint.id}`,
+      dataType: "text",
+      method: "POST",
+      contentType: "application/x-www-form-urlencoded",
+      data: {
+        title: pointData.dbPoint.title,
+        description: pointData.dbPoint.description,
+        type: pointData.dbPoint.type,
+        rating: Number(pointData.dbPoint.rating),
+      },
+    })
+      .then(() => {})
       .catch((err) => {
         console.log("Error:", err);
       });
