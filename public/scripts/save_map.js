@@ -27,7 +27,8 @@ $(() => {
       data: mapData,
     })
       .then(() => {
-        for (let point of window.points) {
+        for (let point of Object.values(window.points)) {
+          console.log("points from object", point);
           if (point.dbPoint) {
             continue;
           } else {

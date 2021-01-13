@@ -2,10 +2,20 @@
 
 $(() => {
   const htmlElement = "map";
-  const mapID = 1;
 
   // creates a map
   const initMap = function (options) {
+    // clear points in mem otherwise points from previous session will be save to current map
+    if (window.points) {
+      window.points = {};
+      window.counter = 0;
+    } else {
+      const points = {};
+      let counter = 0;
+      window.points = points;
+      window.counter = counter;
+    }
+
     const map = new google.maps.Map(
       document.getElementById(htmlElement),
       options
@@ -14,8 +24,25 @@ $(() => {
     map.addListener("click", (event) => {
       window.addPoint(null, event.latLng, map);
     });
+    window.infoWindow = new google.maps.InfoWindow();
+
+    // event listeners for point info window
+    google.maps.event.addListener(window.infoWindow, "domready", () => {
+      const deletePoint = document.getElementById("delete_marker");
+      deletePoint.onclick = (event) => {
+        window.deletePoint(parseInt(deletePoint.getAttribute("data-id")));
+      };
+      const savePoint = document.getElementById("save_marker");
+      savePoint.onclick = (event) => {
+        console.log("saving", event);
+      };
+    });
+    // make map available globally
+    window.googleMap = map;
     return map;
   };
+
+  window.initMap = initMap;
 
   // populates the maps with points from the DB
   const showPoint = function (dbPoint, googleMap) {
@@ -45,10 +72,6 @@ $(() => {
 
   // Gets the Map using MAP ID and calls the initMap (create map) function with values from DB
   const getMap = function (mapID) {
-    // clear points in mem otherwise points from previous session will be save to current map
-    if (window.points) {
-      window.points = [];
-    }
     $.ajax({
       url: `/api/maps/${mapID}`,
       method: "GET",
@@ -62,14 +85,24 @@ $(() => {
           // attaches mapID to googleMap obj for use in app
           mapID: mapID,
         });
-        // make map available globally
-        window.googleMap = googleMap;
+
         console.log("Current mapID", mapID);
         getPoints(googleMap, mapID);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const createSearchBar = function (map) {
+    // console.log("input:", $("#pac-input"));
+    // const input = $("#pac-input");
+    // const searchBox = new google.maps.places.SearchBox(input);
+    // console.log(map);
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // map.addListener("places-changed", () => {
+    //   const places = searchBox.getPlaces();
+    // });
   };
 
   window.getMap = getMap;

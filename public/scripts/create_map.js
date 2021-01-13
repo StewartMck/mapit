@@ -1,22 +1,9 @@
-/*global $, google, document, window, navigator*/
+/*global $, google, window, navigator*/
 
 $(() => {
-  const htmlElement = "map";
-
   // creates a map based on user geolocation or default
   const initMap = function (options) {
-    const map = new google.maps.Map(
-      document.getElementById(htmlElement),
-      options
-    );
-    // creating a new Point (null is passed in because there is no db entry)
-    map.addListener("click", (event) => {
-      window.addPoint(null, event.latLng, map);
-    });
-    // make map available globally
-    window.googleMap = map;
-    console.log("NEW MAP: Current mapID", window.googleMap.mapID);
-    return map;
+    return window.initMap(options);
   };
 
   // navigator api takes in success, error, options
@@ -49,6 +36,7 @@ $(() => {
       mapTypeId: "roadmap",
       mapID: window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1,
     });
+    console.log("NEW MAP: Current mapID", window.googleMap.mapID);
     const infoWindow = new google.maps.InfoWindow();
     infoWindow.setPosition(homeCoords);
     infoWindow.setContent("You are here.");
