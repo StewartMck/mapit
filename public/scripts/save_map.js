@@ -6,10 +6,7 @@ $(() => {
     return {
       // need to change user_id from hard-coded
       user_id: 1,
-      name: window.prompt(
-        "Name Map, cancel to save to existing map",
-        "test_map"
-      ),
+      name: $("#title").text(),
       center_lat: window.googleMap.center.lat,
       center_long: window.googleMap.center.lng,
       zoom: window.googleMap.zoom,
