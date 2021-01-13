@@ -13,7 +13,11 @@ $(() => {
     }
     // make list of maps available globally
     window.mapsFromDB = maps;
-  });
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+
   //click listener on parent of map cells: table id="maps"
   $("#maps").click((event) => {
     // Match only numbers from id=map_xx & pass to load map function

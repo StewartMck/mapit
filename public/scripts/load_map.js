@@ -37,6 +37,9 @@ $(() => {
         window.savePointInfo(event);
       };
     });
+    map.addListener("bounds_changed", () => {
+      console.log('bounds changed');
+    });
     // make map available globally
     window.googleMap = map;
     return map;

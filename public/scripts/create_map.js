@@ -26,31 +26,50 @@ $(() => {
   // builds a map & centers around user location with temporary marker
   /* mapID = checks global maps obj (app.js) for last id and uses the next one as the new maps id */
   const buildUserMap = function (position) {
-    const homeCoords = new google.maps.LatLng(
-      position.coords.latitude,
-      position.coords.longitude
-    );
-    initMap({
-      center: homeCoords,
-      zoom: 16,
-      mapTypeId: "roadmap",
-      mapID: window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1,
+    getNextMapID().then((mapID) => {
+      console.log("mapID to use", mapID);
+      const homeCoords = new google.maps.LatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      );
+      initMap({
+        center: homeCoords,
+        zoom: 16,
+        mapTypeId: "roadmap",
+        mapID: mapID ? mapID : 1,
+      });
+      console.log("NEW MAP: Current mapID", window.googleMap.mapID);
+      const infoWindow = new google.maps.InfoWindow();
+      infoWindow.setPosition(homeCoords);
+      infoWindow.setContent("You are here.");
+      infoWindow.open(window.googleMap);
     });
-    console.log("NEW MAP: Current mapID", window.googleMap.mapID);
-    const infoWindow = new google.maps.InfoWindow();
-    infoWindow.setPosition(homeCoords);
-    infoWindow.setContent("You are here.");
-    infoWindow.open(window.googleMap);
   };
 
   // default map when user does not have location: 'boneyard'
   const buildDefaultMap = function () {
-    initMap({
-      center: new google.maps.LatLng(32.155573819618716, -110.82893675561328),
-      zoom: 16,
-      mapTypeId: "satellite",
-      mapID: window.mapsFromDB[window.mapsFromDB.length - 1]["id"] + 1,
+    getNextMapID().then((mapID) => {
+      console.log("mapID to use", mapID);
+      initMap({
+        center: new google.maps.LatLng(32.155573819618716, -110.82893675561328),
+        zoom: 16,
+        mapTypeId: "satellite",
+        mapID: mapID ? mapID : 1,
+      });
     });
+  };
+
+  const getNextMapID = function () {
+    return $.ajax({
+      method: "GET",
+      url: "/api/maps/latest/map",
+    })
+      .then((latestMapID) => {
+        return latestMapID.maps.id + 1;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // click event for create_map button

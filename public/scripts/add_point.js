@@ -10,6 +10,7 @@ $(() => {
       map: map,
       dbPoint: dbPoint,
       id: window.counter,
+
     });
 
     window.points[window.counter] = point;
