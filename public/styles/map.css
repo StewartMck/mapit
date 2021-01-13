@@ -67,7 +67,6 @@ table, th, td {
 .left input[type=text] {
   padding: 6px;
   border: none;
-  margin-top: 8px;
   margin-right: 16px;
   font-size: 17px;
 }
@@ -76,6 +75,8 @@ table, th, td {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+
 }
 
 .profile {

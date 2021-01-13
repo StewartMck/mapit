@@ -67,7 +67,7 @@ $(() => {
         map_id: Number(window.googleMap.mapID),
       },
     })
-      .then(() => {})
+      .then(() => { })
       .catch((err) => {
         console.log("Error:", err);
       });
@@ -96,5 +96,20 @@ $(() => {
   // click event for id='save_map' button
   $("#save_map").click(() => {
     saveMap(getGoogleMap());
+    $("#maps tr").remove();
+    $.ajax({
+      method: "GET",
+      url: "/api/maps/",
+    }).then((mapsFromDB) => {
+      const maps = mapsFromDB.maps;
+      for (let map of maps) {
+        // Makes a new cell in table with map_id as id & map name from DB
+        $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
+            <td><button id='delete_${map.id}' type="submit">Delete</button></td></tr>`);
+      }
+      // make list of maps available globally
+      window.mapsFromDB = maps;
+    });
+
   });
 });
