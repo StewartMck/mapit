@@ -19,20 +19,25 @@ $(() => {
 
   // saves map to DB and then saves the points found in a global points array. If point matches an id in DB don't save again
   const saveMap = function (mapData) {
-    $.ajax({
-      url: "/api/maps/",
+    // if googleMap has userCreated = true then save map else update
+    const isUserCreated = window.googleMap.userCreated;
+    const params = {
+      url: isUserCreated ? "/api/maps/" : `/api/maps/${window.googleMap.mapID}`,
       dataType: "text",
       method: "POST",
       contentType: "application/x-www-form-urlencoded",
       data: mapData,
-    })
+    };
+    console.log("post params:", params);
+
+    console.log("map", window.googleMap);
+    $.ajax(params)
       .then(() => {
         for (let point of Object.values(window.points)) {
           console.log("points from object", point);
           // if point exists update otherwise save new point
-          if (point.dbPoint && point.dbPoint.id) {
+          if (point.dbPoint.id) {
             updatePoint(point);
-            continue;
           } else {
             savePoint(point);
           }

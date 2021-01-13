@@ -38,7 +38,7 @@ $(() => {
       };
     });
     map.addListener("bounds_changed", () => {
-      console.log('bounds changed');
+      console.log("bounds changed");
     });
     // make map available globally
     window.googleMap = map;
@@ -85,8 +85,9 @@ $(() => {
           center: new google.maps.LatLng(dbMap.center_lat, dbMap.center_long),
           zoom: dbMap.zoom,
           mapTypeId: dbMap.type,
-          // attaches mapID to googleMap obj for use in app
+          // attaches mapID & name to googleMap obj for use in app
           mapID: mapID,
+          name: dbMap.name,
         });
 
         console.log("Current mapID", mapID);

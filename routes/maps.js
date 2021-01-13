@@ -51,7 +51,6 @@ module.exports = (db) => {
       });
   });
 
-
   router.post("/", (req, res) => {
     let queryString = `
     INSERT INTO maps(user_id, name, center_lat, center_long, zoom, type)
@@ -68,6 +67,25 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/:map_id", (req, res) => {
+    let queryString = `
+    UPDATE maps
+    SET name = $1, center_lat = $2, center_long = $3, zoom = $4, type = $5
+    WHERE maps.id = $6
+    RETURNING *`;
+    const queryParams = Object.values(req.body);
+    queryParams.push(req.params.map_id);
+    queryParams.shift();
+    db.query(queryString, queryParams)
+      .then((data) => {
+        const map = data.rows;
+        res.json({ map });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.post("/:map_id/delete", (req, res) => {
     let queryString = `
     UPDATE maps SET is_active = FALSE
@@ -77,8 +95,8 @@ module.exports = (db) => {
     const queryParams = [req.params.map_id];
     db.query(queryString, queryParams)
       .then((data) => {
-        const maps = data.rows;
-        res.json({ maps });
+        const map = data.rows;
+        res.json({ map });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
