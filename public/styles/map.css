@@ -1,5 +1,3 @@
-
-/* Optional: Makes the sample page fill the window. */
 html,
 body {
   height: 100%;
@@ -72,4 +70,15 @@ table, th, td {
   margin-top: 8px;
   margin-right: 16px;
   font-size: 17px;
+}
+
+.features {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile {
+  display: flex;
+  justify-content: flex-end;
 }

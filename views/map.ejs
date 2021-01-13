@@ -35,15 +35,27 @@
 <body>
   <main class="container">
     <div class="left">
+      <div class="profile">
+        <div>
+          <form action="/user">
+            <input type="submit" value="GO TO PROFILE" />
+          </form>
+        </div>
+      </div>
       <div class="mapName">
         <header>
             <h1>Map Name</h1>
         </header>
       </div>
-      <div>
-        <input type="text" placeholder="Search..">
-        <button id="save_map">SAVE MAP</button>
-        <button id="create_map">CREATE MAP</button>
+      <div class="features">
+        <div>
+          <input type="text" placeholder="Search..">
+        </div>
+        <div>
+          <button id="save_map">SAVE MAP</button>
+          <button id="create_map">CREATE MAP</button>
+        </div>
+
       </div>
 
       <div id="map">
@@ -57,12 +69,11 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody id="maps">
-          <tr>
-            <td>Places to go</td>
-          </tr>
+
         </tbody>
       </table>
     </div>

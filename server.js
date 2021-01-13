@@ -9,6 +9,8 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require('cookie-session')
+
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -34,6 +36,12 @@ app.use(
 );
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: "session",
+  keys: ["key1"],
+  secret: "You will never crack this"
+}));
+
 // Separated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const mapsRoutes = require("./routes/maps");
@@ -50,29 +58,48 @@ app.use("/api/comments", commentRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  // const userID = req.session.user_id;
+  const userID = req.session.user_id;
 
-  // if (!userID) {
-  //   res.render("/index_landing");
-  //   return;
-  // }
+  //checking if user is logged in
+  if (!userID) {
+    res.render("index_landing");
+    return;
+  }
 
-  res.render("index");
+  res.render("map");
 });
 
 
-//Will uncomment these later for setting up user cookies
-//need to install cookie-session
-// app.get('/login/:id', (req, res) => {
-//   req.session.user_id = req.params.id;
-//   res.redirect('/');
-// });
-
-app.get("/users/:email", (req, res) => {
-  const userEmail = req.params.email
-  const templateVars = { userEmail }
-  res.render("user", templateVars);
+//login where it sets a cookie by user_id
+app.get('/login/:id', (req, res) => {
+  req.session.user_id = req.params.id;
+  res.redirect('/');
 });
+
+app.get("/user", (req, res) => {
+  const userId = req.session.user_id
+
+  if (!userId) {
+    res.render("/index_landing");
+    return;
+  }
+  //db queries here pass results to temp vars
+  let queryString = `
+  SELECT *
+  FROM users
+  WHERE users.id = $1`
+  const queryParams = [userId];
+  db.query(queryString, queryParams)
+    .then((data) => {
+      const templateVars = data.rows[0];
+      console.log(templateVars);
+      res.render("user", templateVars);
+    })
+});
+
+// app.post("/api/maps/:map_id/delete", (req, res) => {
+//   res.redirect("/user")
+// })
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
