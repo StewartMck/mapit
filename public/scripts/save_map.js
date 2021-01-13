@@ -29,7 +29,7 @@ $(() => {
       .then(() => {
         for (let point of Object.values(window.points)) {
           console.log("points from object", point);
-          if (point.dbPoint) {
+          if (point.dbPoint && point.dbPoint.id) {
             continue;
           } else {
             savePoints(point);
@@ -49,12 +49,12 @@ $(() => {
       method: "POST",
       contentType: "application/x-www-form-urlencoded",
       data: {
-        title: "test-point",
-        description: "description",
+        title: pointData.dbPoint.title,
+        description: pointData.dbPoint.description,
         longitude: pointData.getPosition().lng(),
         latitude: pointData.getPosition().lat(),
         type: "point",
-        rating: "0",
+        rating: pointData.dbPoint.rating,
         map_id: Number(window.googleMap.mapID),
       },
     })

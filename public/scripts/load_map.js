@@ -20,9 +20,9 @@ $(() => {
       document.getElementById(htmlElement),
       options
     );
-    // creating a new Point (null is passed in because there is no db entry)
+    // creating a new Point (empty {} is passed in because there is no db entry)
     map.addListener("click", (event) => {
-      window.addPoint(null, event.latLng, map);
+      window.addPoint({}, event.latLng, map);
     });
     window.infoWindow = new google.maps.InfoWindow();
 
@@ -34,7 +34,7 @@ $(() => {
       };
       const savePoint = document.getElementById("save_marker");
       savePoint.onclick = (event) => {
-        console.log("saving", event);
+        window.savePointInfo(event);
       };
     });
     // make map available globally

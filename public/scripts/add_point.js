@@ -27,24 +27,19 @@ $(() => {
 
   const populateMarkerInfo = function (dbPoint, pointNumber) {
     return (
-      '<div id="content">' +
-      '<div id="markerInfo">' +
-      "</div>" +
-      `<h2 id="Heading" class="Heading" contenteditable='true'>${
-        dbPoint ? dbPoint.title : "New Point"
-      }
-      </h2>` +
-      '<div id="bodyContent">' +
-      `<h3 contenteditable='true'>${
-        dbPoint ? dbPoint.description : "New Description"
+      '<div id="pointInfo">' +
+      `<h2 id="point_title" class="Heading" contenteditable='true'>${
+        dbPoint.title ? dbPoint.title : "New Point"
+      } </h2>` +
+      `<h3 id="point_description" contenteditable='true'>${
+        dbPoint.description ? dbPoint.description : "New Description"
       }</h3>` +
       '<label for="rating">Rating:</label>' +
-      `<input id="rating" type="number" min="0" step="1" max="5" value=${
-        dbPoint ? dbPoint.rating : "0"
+      `<input id="point_rating" type="number" min="0" step="1" max="5" value=${
+        dbPoint.rating ? dbPoint.rating : "0"
       }>` +
       `<button id='save_marker' data-id="${pointNumber}">SAVE</button>` +
       `<button id='delete_marker' data-id="${pointNumber}">DELETE</button>` +
-      "</div>" +
       "</div>"
     );
   };
@@ -55,5 +50,22 @@ $(() => {
     );
   };
 
+  const savePointInfo = function (event) {
+
+    // gets the point from the save button
+    const pointNumber = $(event.target.parentElement).find("#save_marker").attr("data-id");
+
+    // populates the dbPoint object on the point with data from the info window
+    window.points[pointNumber].dbPoint.title = $(event.target.parentElement).find("#point_title").text();
+    window.points[pointNumber].dbPoint.description = $(event.target.parentElement).find("#point_description").text();
+    window.points[pointNumber].dbPoint.rating = $(event.target.parentElement).find("#point_rating").val();
+
+    console.log(window.points[pointNumber].dbPoint);
+    window.infoWindow.close();
+    console.log('points after save:', window.points);
+
+  };
+
   window.addPoint = addPoint;
+  window.savePointInfo = savePointInfo;
 });
