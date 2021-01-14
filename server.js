@@ -70,13 +70,14 @@ app.get("/", (req, res) => {
     res.render("index_landing");
     return;
   }
+
   res.render("map");
 });
 
 //login where it sets a cookie by user_id
 app.get("/login/:id", (req, res) => {
   req.session.user_id = req.params.id;
-  res.redirect("/");
+  res.redirect("/user");
 });
 
 app.get("/user", (req, res) => {
