@@ -3,7 +3,8 @@
 $(() => {
   // Gets the info of the googleMaps obj and will export as mapData
   const getGoogleMap = function () {
-    console.log(window.appVars);
+    console.log("appvars", window.appVars);
+    console.log("googlemap", window.googleMap);
     return {
       user_id: window.appVars.userID,
       name: $("#title").text(),
