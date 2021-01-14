@@ -13,6 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500;900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/eef3fdefd6.js" crossorigin="anonymous"></script>
+
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/map.css" type="text/css" />
@@ -49,13 +51,15 @@
         <div class="profile">
           <div>
             <form action="/user">
-              <input type="submit" value="GO TO PROFILE" />
+              <button type="submit" id="goprofile">
+                <i class="fas fa-chevron-circle-right"></i> Your Profile
+              </button>
             </form>
           </div>
         </div>
         <div class="mapName">
           <header>
-            <h1 id="title" contenteditable="true"></h1>
+            <h1 id="title" contenteditable="true">Name Your Map</h1>
           </header>
         </div>
         <div class="features">
@@ -63,8 +67,8 @@
             <input type="text" placeholder="Search.." />
           </div>
           <div>
-            <button id="save_map">SAVE MAP</button>
-            <button id="create_map">CREATE MAP</button>
+            <button id="save_map"><i class="fas fa-save"></i> SAVE MAP</button>
+            <button id="create_map"><i class="far fa-plus-square"></i> CREATE MAP</button>
           </div>
         </div>
 
@@ -76,10 +80,9 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Delete</th>
-              <th scope="col">Favourite</th>
-
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody id="maps"></tbody>
@@ -88,4 +91,3 @@
     </main>
   </body>
 </html>
-0

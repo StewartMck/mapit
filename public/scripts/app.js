@@ -42,14 +42,14 @@ $(() => {
       $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
       ${
         window.appVars.userID
-          ? `<td><button id='delete_${map.id}' type="submit " ${
+          ? `<td><button id='delete_${map.id}' class="btn" type="submit " ${
               window.appVars.userID !== map.user_id ? "disabled" : ""
-            }>Delete</button></td>`
+            }><i class="fa fa-trash"></i></button></td>`
           : ""
       }
       ${
         window.appVars.userID
-          ? `<td><button id='favourite_${map.id}' type="submit ">Favourite</button></td>`
+          ? `<td><button id='favourite_${map.id}' class="btn" type="submit "><i class="fas fa-plus-circle"></i></button></td>`
           : ""
       }
       </tr>`);
