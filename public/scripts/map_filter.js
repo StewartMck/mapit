@@ -5,10 +5,15 @@ $(() => {
   $("#filter").on("change", (event) => {
     $.ajax({
       method: "GET",
-      url: `/api/users/1`,
-    }).then((userData) => {
-      filterTable(userData.userData, event);
-    });
+      url: `/api/users/${window.appVars.userID}`,
+    })
+      .then((userData) => {
+        console.log(userData);
+        filterTable(userData.userData, event);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   const filterTable = function (userData, event) {
@@ -17,24 +22,13 @@ $(() => {
 
     switch (selectedOption) {
       case "all":
-        for (let map of window.mapsFromDB) {
-          $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
-          <td><button id='delete_${map.id}' type="submit">Delete</button></td></tr>`);
-        }
+        window.appVars.buildTable(window.mapsFromDB);
         break;
       case "favourites":
-        for (let map of userData.favourites) {
-          console.log(map);
-          $("#maps").append(`<tr><td id='map_${map.map_id}'>${map.name}</td>
-          <td><button id='delete_${map.map_id}' type="submit">Delete</button></td></tr>`);
-        }
+        window.appVars.buildTable(userData.favourites);
         break;
       case "contributions":
-        for (let map of userData.points) {
-          console.log(map);
-          $("#maps").append(`<tr><td id='map_${map.map_id}'>${map.name}</td>
-          <td><button id='delete_${map.map_id}' type="submit">Delete</button></td></tr>`);
-        }
+        window.appVars.buildTable(userData.points);
         break;
     }
   };

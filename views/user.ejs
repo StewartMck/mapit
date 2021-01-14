@@ -37,6 +37,10 @@
 
     <!-- Testing Google Maps API -->
   </head>
+  <script>
+    // set UserID to appVars Obj
+    window.appVars = {userID: <%= userID %>};
+  </script>
   <body>
     <main class="container">
       <div class="top">
@@ -72,7 +76,7 @@
               <th scope="col">Delete</th>
             </tr>
           </thead>
-          <tbody id="maps"></tbody>
+          <tbody id="maps" class="profile"></tbody>
         </table>
       </div>
       <div class="mapName">

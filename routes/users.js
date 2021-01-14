@@ -30,33 +30,36 @@ module.exports = (db) => {
   WHERE users.id = $1 AND maps.is_active = TRUE
   GROUP by users.id;
   `;
-    const queryParams = [req.params.id];
+    const userID = req.params.id;
+    const queryParams = [userID];
     return (
       db
         .query(queryString, queryParams)
         // need a catch here to end req and return empty obj when user does not have any maps that are active.
         .then((user) => {
           userData.userInfo = user.rows[0];
-          return db.query(`SELECT favourites.map_id, maps.name
+          return db.query(`SELECT favourites.map_id AS id, maps.name
           FROM favourites
           JOIN maps ON favourites.map_id = maps.id
-          WHERE favourites.user_id = ${user.rows[0].id} AND maps.is_active = TRUE;
+          WHERE favourites.user_id = ${userID} AND maps.is_active = TRUE
+          ;
           `);
         })
         .then((favourites) => {
           userData.favourites = favourites.rows;
-          return db.query(`SELECT points.id as point_id, points.title, maps.name, maps.id AS map_id
-        FROM points
-        JOIN maps ON points.map_id = maps.id
-        WHERE maps.user_id = ${userData.userInfo.id} AND maps.is_active = TRUE
-        ORDER BY maps.name;`);
+          return db.query(`SELECT maps.id, maps.name
+          FROM maps
+          JOIN points ON points.map_id = maps.id
+          WHERE maps.user_id = ${userID} AND maps.is_active =TRUE
+          GROUP BY maps.id;
+          `);
         })
         .then((points) => {
           userData.points = points.rows;
           res.json({ userData });
         })
         .catch((err) => {
-          res.status(500).json({ error: err.message });
+          res.status(500).json({ error: err.message, userData });
         })
     );
   });

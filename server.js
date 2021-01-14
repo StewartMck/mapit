@@ -60,13 +60,15 @@ app.use("/api/comments", commentRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const userID = req.session.user_id;
+  // store in app.locals - which will be a global template var available in all pages without explicitly sending
+  app.locals.userID = userID;
 
   //checking if user is logged in
   if (!userID) {
     res.render("index_landing");
     return;
   }
-  res.render("map", { userID: userID });
+  res.render("map");
 });
 
 //login where it sets a cookie by user_id
@@ -76,10 +78,10 @@ app.get("/login/:id", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  const userId = req.session.user_id;
+  const userID = req.session.user_id;
 
-  if (!userId) {
-    res.render("/index_landing");
+  if (!userID) {
+    res.render("index_landing");
     return;
   }
   //db queries here pass results to temp vars
@@ -87,17 +89,13 @@ app.get("/user", (req, res) => {
   SELECT *
   FROM users
   WHERE users.id = $1`;
-  const queryParams = [userId];
+  const queryParams = [userID];
   db.query(queryString, queryParams).then((data) => {
     const templateVars = data.rows[0];
     console.log("templateVars", templateVars);
     res.render("user", templateVars);
   });
 });
-
-// app.post("/api/maps/:map_id/delete", (req, res) => {
-//   res.redirect("/user")
-// })
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
