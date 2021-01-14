@@ -3,6 +3,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  color: #D2482C;
+  font-family: 'Big Shoulders Stencil Text', cursive;
 }
 
 .container {
@@ -14,13 +16,15 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  background-color: rgb(180, 190, 36);
+  background: #000000e0;
+  font-family: 'Big Shoulders Stencil Text', cursive;
+
 }
 
 .left {
   height: 100%;
   width: 100%;
-  background: aqua;
+  background: #000000e0;
   margin-right: 30%;
 }
 
@@ -28,6 +32,8 @@ body {
   height: 15%;
   display: flex;
   justify-content: center;
+  color: #D2482C
+
 }
 
 .mapName header h1 {
@@ -45,7 +51,7 @@ body {
   /* background-color: rgb(128, 54, 54); Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
-  background: blue;
+  background: #352d2d;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,11 +65,18 @@ body {
   border: 1px solid black;
 } */
 
-table, th, td {
-  border: 1px solid black;
+table, th {
+  border-bottom: 1px solid #D2482C;
   width: 80%;
+  font-size: large;
+  color: white;
+  letter-spacing: 2px;
 }
 
+th, td {
+  text-align: center;
+  padding:4%;
+}
 .left input[type=text] {
   padding: 6px;
   border: none;
@@ -82,4 +95,8 @@ table, th, td {
 .profile {
   display: flex;
   justify-content: flex-end;
+}
+
+#title {
+  padding-left: 5%;
 }
