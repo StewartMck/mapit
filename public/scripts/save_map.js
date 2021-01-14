@@ -3,9 +3,9 @@
 $(() => {
   // Gets the info of the googleMaps obj and will export as mapData
   const getGoogleMap = function () {
+    console.log(window.appVars);
     return {
-      // need to change user_id from hard-coded
-      user_id: 1,
+      user_id: window.appVars.userID,
       name: $("#title").text(),
       center_lat: window.googleMap.center.lat,
       center_long: window.googleMap.center.lng,
@@ -64,7 +64,7 @@ $(() => {
         map_id: Number(window.googleMap.mapID),
       },
     })
-      .then(() => { })
+      .then(() => {})
       .catch((err) => {
         console.log("Error:", err);
       });
@@ -107,6 +107,5 @@ $(() => {
       // make list of maps available globally
       window.mapsFromDB = maps;
     });
-
   });
 });

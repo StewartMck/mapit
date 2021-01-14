@@ -66,8 +66,7 @@ app.get("/", (req, res) => {
     res.render("index_landing");
     return;
   }
-
-  res.render("map");
+  res.render("map", { userID: userID });
 });
 
 //login where it sets a cookie by user_id
@@ -91,7 +90,7 @@ app.get("/user", (req, res) => {
   const queryParams = [userId];
   db.query(queryString, queryParams).then((data) => {
     const templateVars = data.rows[0];
-    console.log(templateVars);
+    console.log("templateVars", templateVars);
     res.render("user", templateVars);
   });
 });

@@ -29,8 +29,15 @@
     <script type="text/javascript" src="/scripts/add_point.js"></script>
     <script type="text/javascript" src="/scripts/create_map.js"></script>
     <script type="text/javascript" src="/scripts/delete_point.js"></script>
+
+    <script type="text/javascript" src="/scripts/map_filter.js"></script>
     <!-- Testing Google Maps API -->
   </head>
+  <script>
+    // set UserID to appVars Obj
+    window.appVars = {userID: <%= userID %>};
+    console.log("appvars", window.appVars);
+  </script>
   <body>
     <main class="container">
       <div class="left">
@@ -40,6 +47,7 @@
               <input type="submit" value="GO TO PROFILE" />
             </form>
           </div>
+          <button id="filter">filter</button>
         </div>
         <div class="mapName">
           <header>
@@ -73,4 +81,5 @@
       </div>
     </main>
   </body>
-</html>0
+</html>
+0

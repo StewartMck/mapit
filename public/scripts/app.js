@@ -1,19 +1,21 @@
 /*global $, window*/
-
+window.appVars = {};
 $(() => {
+  console.log(window);
   $.ajax({
     method: "GET",
     url: "/api/maps/",
-  }).then((mapsFromDB) => {
-    const maps = mapsFromDB.maps;
-    for (let map of maps) {
-      // Makes a new cell in table with map_id as id & map name from DB
-      $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
-      <td><button id='delete_${map.id}' type="submit">Delete</button></td></tr>`);
-    }
-    // make list of maps available globally
-    window.mapsFromDB = maps;
   })
+    .then((mapsFromDB) => {
+      const maps = mapsFromDB.maps;
+      for (let map of maps) {
+        // Makes a new cell in table with map_id as id & map name from DB
+        $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
+      <td><button id='delete_${map.id}' type="submit">Delete</button></td></tr>`);
+      }
+      // make list of maps available globally
+      window.mapsFromDB = maps;
+    })
     .catch((err) => {
       console.log(err);
     });
@@ -44,7 +46,7 @@ $(() => {
         });
       });
     }
-
+    //possible issue here
     window.getMap(mapID);
   });
 });
