@@ -26,9 +26,7 @@ $(() => {
       contentType: "application/x-www-form-urlencoded",
       data: mapData,
     };
-    console.log("post params:", params);
 
-    console.log("map", window.googleMap);
     $.ajax(params)
       .then(() => {
         for (let point of Object.values(window.points)) {

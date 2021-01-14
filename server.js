@@ -48,12 +48,14 @@ const usersRoutes = require("./routes/users");
 const mapsRoutes = require("./routes/maps");
 const pointRoutes = require("./routes/points");
 const commentRoutes = require("./routes/comments");
+const favouriteRoutes = require("./routes/favourites");
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(db));
 app.use("/api/maps", mapsRoutes(db));
 app.use("/api/points", pointRoutes(db));
 app.use("/api/comments", commentRoutes(db));
+app.use("/api/favourites", favouriteRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!

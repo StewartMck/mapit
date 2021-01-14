@@ -9,6 +9,7 @@ $(() => {
       url: "/api/maps/",
     })
       .then((mapsFromDB) => {
+        updateUser();
         const maps = mapsFromDB.maps;
         buildTable(maps);
         // make list of maps available globally
@@ -27,6 +28,20 @@ $(() => {
       .then((mapsFromDB) => {
         // make list of maps available globally
         window.mapsFromDB = mapsFromDB.maps;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const updateUser = function () {
+    $.ajax({
+      method: "GET",
+      url: `/api/users/${window.appVars.userID}`,
+    })
+      .then((userData) => {
+        // use jquery to merge 2 objects
+        $.extend(window.appVars, userData);
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +73,8 @@ $(() => {
 
   //click listener on parent of map cells: table id="maps" for load map and delete
   $("#maps").click((event) => {
-    let mapID = event.target.id.match(/(\d+)/)[0];
+    console.log("appvarData;", window.appVars);
+    let mapID = Number(event.target.id.match(/(\d+)/)[0]);
 
     if (event.target.id.includes("delete")) {
       $.ajax({
@@ -74,28 +90,41 @@ $(() => {
         }
       });
     } else if (event.target.id.includes("favourite")) {
-      //if favourite_id exists, delete request using favourite id
-      //otherwise add to favourites
-      $.ajax({
-        method: "POST",
-        url: `/api/maps/favourites`,
-      }).then(() => {
-        updateMapsDB();
-        $("#maps tr").remove();
-        if ($(event.currentTarget).attr("class") === "profile") {
-          $("#filter").trigger("change");
-        } else {
-          getMaps();
+      const favourites = window.appVars.userData.favourites;
+      let isFound = false;
+      for (const fav of favourites) {
+        if (fav.id === mapID) {
+          isFound = true;
+          break;
         }
+      }
+      let url =
+        `/api/favourites/` +
+        (isFound
+          ? `${window.appVars.userID}/delete`
+          : `${window.appVars.userID}`);
+
+      $.ajax({
+        url: url,
+        dataType: "text",
+        method: "POST",
+        contentType: "application/x-www-form-urlencoded",
+        data: { mapID },
       })
+        .then(() => {
+          updateUser();
+          updateMapsDB();
+          $("#maps tr").remove();
+          if ($(event.currentTarget).attr("class") === "profile") {
+            $("#filter").trigger("change");
+          } else {
+            getMaps();
+          }
+        })
+        .catch((e) => console.log(e));
     } else {
       window.getMap(mapID);
     }
-
-
-
-
-
   });
   window.appVars.getMaps = getMaps;
   window.appVars.buildTable = buildTable;
