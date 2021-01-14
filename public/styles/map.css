@@ -186,3 +186,12 @@ th, td {
 #save_map:hover {
   background-color:  #eb2801;;
 }
+
+.btn:disabled {
+  background-color: #d84e33; /* Blue background */
+  opacity: .5;
+}
+
+.btn > * {
+  pointer-events: none;
+}

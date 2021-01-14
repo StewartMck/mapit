@@ -90,6 +90,8 @@ $(() => {
           // attaches mapID & name to googleMap obj for use in app
           mapID: mapID,
           name: dbMap.name,
+          //attach user_id to googleMAP obj for save_map
+          mapUserId: dbMap.user_id
         });
 
         console.log("Current mapID", mapID);
