@@ -37,15 +37,18 @@ module.exports = (db) => {
         // need a catch here to end req and return empty obj when user does not have any maps that are active.
         .then((user) => {
           userData.userInfo = user.rows[0];
-          return db.query(`SELECT map_id FROM
-        favourites WHERE user_id = ${user.rows[0].id}`);
+          return db.query(`SELECT favourites.map_id, maps.name
+          FROM favourites
+          JOIN maps ON favourites.map_id = maps.id
+          WHERE favourites.user_id = ${user.rows[0].id} AND maps.is_active = TRUE;
+          `);
         })
         .then((favourites) => {
           userData.favourites = favourites.rows;
           return db.query(`SELECT points.id as point_id, points.title, maps.name, maps.id AS map_id
         FROM points
         JOIN maps ON points.map_id = maps.id
-        WHERE maps.user_id = ${userData.userInfo.id}
+        WHERE maps.user_id = ${userData.userInfo.id} AND maps.is_active = TRUE
         ORDER BY maps.name;`);
         })
         .then((points) => {
