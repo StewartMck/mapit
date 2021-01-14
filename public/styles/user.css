@@ -3,6 +3,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Big Shoulders Stencil Text', cursive;
+  color: #D2482C;
 }
 
 
@@ -15,7 +17,7 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  background-color: rgb(180, 190, 36);
+  background: #000000e0;
 }
 
 .top {
@@ -26,19 +28,18 @@ body {
 }
 
 .user {
-  background: green;
+  background: #352d2d;
   padding: 2%;
   margin: 5%;
 }
 
 .create {
-  background: blue;
   padding: 2%;
   margin-bottom: 5%;
 }
 
 .bottom {
-  background: aqua;
+  background: #352d2d;
   width: 80%;
   height: 50%;
   display: flex;
@@ -46,10 +47,15 @@ body {
   align-items: center;
 }
 
-table, th, td {
-  border: 1px solid black;
+table, th {
+  border-bottom: 1px solid #D2482C;
   width: 80%;
+  color: white;
+}
 
+th, td {
+  text-align: center;
+  padding:1%;
 }
 
 #map {
