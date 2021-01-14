@@ -37,9 +37,10 @@ body {
 }
 
 .mapName header h1 {
-  height: 100%;
   text-align: center;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
 }
 
 .right {
@@ -57,8 +58,15 @@ body {
   align-items: center;
 }
 
+.right h3 {
+  margin: 0;
+}
+
 #map {
-  height: 85%;
+  height: 720px;
+  margin-top: 2%;
+  border-radius: 25px;
+
 }
 
 /* .table {
@@ -71,6 +79,7 @@ table, th {
   font-size: large;
   color: white;
   letter-spacing: 2px;
+  font-size: 20px;
 }
 
 th, td {
@@ -89,7 +98,12 @@ th, td {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-right: 10px;
+}
 
+.features input {
+  border-radius: 15px;
+  margin-left: 10px
 }
 
 .profile {
@@ -98,5 +112,77 @@ th, td {
 }
 
 #title {
-  padding-left: 5%;
+  background: #D2482C;
+  color: white;
+  margin-top: 3%
+}
+
+
+
+.btn {
+  background-color: #D2482C; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 10px;
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color:  #eb2801;;
+}
+
+.right h3 {
+  font-size: 25px;
+}
+
+#goprofile {
+  background-color: #D2482C; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 14px; /* Some padding */
+  font-size: 18px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 15px;
+  margin: 3px;
+  margin-right: 7px;
+}
+
+/* Darker background on mouse-over */
+#goprofile:hover {
+  background-color:  #eb2801;;
+}
+
+#create_map {
+  background-color: #D2482C; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 4px 6px; /* Some padding */
+  font-size: 18px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 10px;
+
+}
+
+/* Darker background on mouse-over */
+#create_map:hover {
+  background-color:  #eb2801;;
+}
+
+#save_map {
+  background-color: #D2482C; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 4px 6px; /* Some padding */
+  font-size: 18px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 10px;
+}
+
+/* Darker background on mouse-over */
+#save_map:hover {
+  background-color:  #eb2801;;
 }

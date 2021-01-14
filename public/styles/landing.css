@@ -38,9 +38,9 @@ body {
 .appName header h1 {
   height: 100%;
   text-align: center;
-  margin-top: 50px;
-  color: #D2482C
-
+  margin-top: 4%;
+  color: #D2482C;
+  font-size: 40px
 }
 
 .right {
@@ -58,8 +58,15 @@ body {
   align-items: center;
 }
 
+.right h3 {
+  font-size: 25px;
+  margin: 0;
+}
+
 #map {
   height: 85%;
+  border-radius: 25px;
+  margin: 2%
 }
 
 /* .table {
@@ -72,6 +79,7 @@ table, th {
   font-size: large;
   color: white;
   letter-spacing: 2px;
+  font-size: 20px;
 }
 
 th, td {
@@ -86,3 +94,4 @@ img {
 #title {
   padding-left: 5%;
 }
+

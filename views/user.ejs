@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link
       href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500;900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/eef3fdefd6.js" crossorigin="anonymous"></script>
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/user.css" type="text/css" />
@@ -57,24 +58,32 @@
 
         <div class="create">
           <form action="/">
-            <input type="submit" value="Create a new map" />
+            <button type="submit" id="createbtn">
+              <i class="far fa-plus-square"></i> New Map
+            </button>
           </form>
         </div>
       </div>
 
       <div class="bottom">
-        <h3>Maps List</h3>
-        <select id="filter" name="filter">
-          <option value="all">All</option>
-          <option value="favourites">Favourites</option>
-          <option value="contributions">Contributions</option>
-        </select>
+        <div class="bottomtop">
+          <div>
+            <h3>Maps List</h3>
+          </div>
+          <div>
+            <select id="filter" name="filter">
+              <option value="all">All</option>
+              <option value="favourites">Favourites</option>
+              <option value="contributions">Contributions</option>
+            </select>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Delete</th>
-              <th scope="col">Favourite</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody id="maps" class="profile"></tbody>
