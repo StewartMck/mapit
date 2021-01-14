@@ -46,7 +46,13 @@ $(() => {
               window.appVars.userID !== map.user_id ? "disabled" : ""
             }>Delete</button></td>`
           : ""
-      }</tr>`);
+      }
+      ${
+        window.appVars.userID
+          ? `<td><button id='favourite_${map.id}' type="submit ">Favourite</button></td>`
+          : ""
+      }
+      </tr>`);
     }
   };
 
@@ -67,9 +73,29 @@ $(() => {
           getMaps();
         }
       });
+    } else if (event.target.id.includes("favourite")) {
+      //if favourite_id exists, delete request using favourite id
+      //otherwise add to favourites
+      $.ajax({
+        method: "POST",
+        url: `/api/maps/favourites`,
+      }).then(() => {
+        updateMapsDB();
+        $("#maps tr").remove();
+        if ($(event.currentTarget).attr("class") === "profile") {
+          $("#filter").trigger("change");
+        } else {
+          getMaps();
+        }
+      })
     } else {
       window.getMap(mapID);
     }
+
+
+
+
+
   });
   window.appVars.getMaps = getMaps;
   window.appVars.buildTable = buildTable;
