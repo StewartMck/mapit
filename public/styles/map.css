@@ -93,6 +93,11 @@ td {
   width: 20em;
 }
 
+/* This is needed otherwise in Chrome there is an outline when clicked */
+.left input:focus {
+  outline: none;
+}
+
 .features {
   display: flex;
   flex-direction: row;
@@ -132,6 +137,10 @@ td {
   background-color: #eb2801;
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .right h3 {
   font-size: 25px;
 }
@@ -153,6 +162,10 @@ td {
   background-color: #eb2801;
 }
 
+#goprofile:focus {
+  outline: none;
+}
+
 #create_map {
   background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
@@ -166,6 +179,10 @@ td {
 /* Darker background on mouse-over */
 #create_map:hover {
   background-color: #eb2801;
+}
+
+#create_map:focus {
+  outline: none;
 }
 
 #save_map {
@@ -183,9 +200,13 @@ td {
   background-color: #eb2801;
 }
 
+#save_map:focus {
+  outline: none;
+}
+
 .btn:disabled {
   background-color: #d84e33; /* Blue background */
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .btn > * {

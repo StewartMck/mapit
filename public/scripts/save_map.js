@@ -7,8 +7,7 @@ $(() => {
     console.log("googlemap", window.googleMap);
     return {
       //setting user_id to mapUserId
-      user_id: window.googleMap.mapUserId,
-      // user_id: window.appVars.userID,
+      user_id: window.googleMap.mapUserID || window.appVars.userID,
       name: $("#title").text(),
       center_lat: window.googleMap.center.lat,
       center_long: window.googleMap.center.lng,
@@ -98,16 +97,8 @@ $(() => {
     $.ajax({
       method: "GET",
       url: "/api/maps/",
-    }).then((mapsFromDB) => {
+    }).then(() => {
       window.appVars.getMaps();
-      // const maps = mapsFromDB.maps;
-      // for (let map of maps) {
-      //   // Makes a new cell in table with map_id as id & map name from DB
-      //   $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
-      //       <td><button id='delete_${map.id}' type="submit">Delete</button></td></tr>`);
-      // }
-      // // make list of maps available globally
-      // window.mapsFromDB = maps;
     });
   });
 });

@@ -42,9 +42,7 @@ $(() => {
         window.savePointInfo(event);
       };
     });
-    map.addListener("bounds_changed", () => {
-      console.log("bounds changed");
-    });
+
     // make map available globally
     window.googleMap = map;
     return map;
@@ -96,7 +94,7 @@ $(() => {
           mapID: mapID,
           name: dbMap.name,
           //attach user_id to googleMAP obj for save_map
-          mapUserId: dbMap.user_id
+          mapUserId: dbMap.user_id,
         });
 
         console.log("Current mapID", mapID);
@@ -113,15 +111,9 @@ $(() => {
     // so that the autocomplete requests use the current map bounds for the
     // bounds option in the request.
     autocomplete.bindTo("bounds", map);
-    // Set the data fields to return when the user selects a place.
-    autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
 
-    const marker = new google.maps.Marker({
-      map,
-      anchorPoint: new google.maps.Point(0, -29),
-    });
     autocomplete.addListener("place_changed", () => {
-      marker.setVisible(false);
+      map.setZoom(21);
       $(input).val("");
       const place = autocomplete.getPlace();
       if (!place.geometry) {
@@ -138,8 +130,6 @@ $(() => {
         map.setCenter(place.geometry.location);
         map.setZoom(17); // Why 17? Because it looks good.
       }
-      marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
     });
   };
 

@@ -3,11 +3,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Big Shoulders Stencil Text', cursive;
-  color: #D2482C;
+  font-family: "Big Shoulders Stencil Text", cursive;
+  color: #d2482c;
   background: #000000e0;
 }
-
 
 .container {
   /* height: 100%; */
@@ -50,16 +49,18 @@ body {
   border-radius: 30px;
 }
 
-table, th {
-  border-bottom: 1px solid #D2482C;
+table,
+th {
+  border-bottom: 1px solid #d2482c;
   width: 95%;
   color: white;
   font-size: 24px;
 }
 
-th, td {
+th,
+td {
   text-align: center;
-  padding:1%;
+  padding: 1%;
 }
 
 #map {
@@ -69,9 +70,8 @@ th, td {
   margin-top: 2%;
 }
 
-
 .btn {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
@@ -82,9 +82,12 @@ th, td {
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
 }
 
+.btn:focus {
+  outline: none;
+}
 
 .bottom h3 {
   font-size: 28px;
@@ -92,13 +95,12 @@ th, td {
 }
 
 #title {
-  margin-top: .8em;
+  margin-top: 0.8em;
   margin-bottom: 0;
 }
 
-
 #createbtn {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 14px; /* Some padding */
@@ -109,11 +111,15 @@ th, td {
 
 /* Darker background on mouse-over */
 #createbtn:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
+}
+
+#createbtn:focus {
+  outline: none;
 }
 
 #map {
-  border-radius:20px;
+  border-radius: 20px;
 }
 
 .bottomtop {
@@ -126,7 +132,7 @@ th, td {
 
 .btn:disabled {
   background-color: #d84e33; /* Blue background */
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .btn > * {
