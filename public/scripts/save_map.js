@@ -6,7 +6,9 @@ $(() => {
     console.log("appvars", window.appVars);
     console.log("googlemap", window.googleMap);
     return {
-      user_id: window.appVars.userID,
+      //setting user_id to mapUserId
+      user_id: window.googleMap.mapUserId,
+      // user_id: window.appVars.userID,
       name: $("#title").text(),
       center_lat: window.googleMap.center.lat,
       center_long: window.googleMap.center.lng,
