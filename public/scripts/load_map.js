@@ -22,8 +22,9 @@ $(() => {
     );
 
     const input = document.getElementById("pac-input");
-
-    autoComplete(input, map);
+    if (window.appVars.userID) {
+      autoComplete(input, map);
+    }
 
     // creating a new Point (empty {} is passed in because there is no db entry)
     map.addListener("click", (event) => {
@@ -78,7 +79,6 @@ $(() => {
 
   // Gets the Map using MAP ID and calls the initMap (create map) function with values from DB
   const getMap = function (mapID) {
-    console.log("in getmap:", window.appVars.UserID);
     $.ajax({
       url: `/api/maps/${mapID}`,
       method: "GET",
@@ -97,7 +97,6 @@ $(() => {
           mapUserId: dbMap.user_id,
         });
 
-        console.log("Current mapID", mapID);
         getPoints(googleMap, mapID);
       })
       .catch((err) => {

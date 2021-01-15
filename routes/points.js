@@ -24,7 +24,7 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     let queryString = `
     INSERT INTO points(title, description, longitude, latitude, type, rating, map_id, user_id)
-    VALUES($1, $2, $3, $4, $5, $6, $7)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *`;
     const queryParams = Object.values(req.body);
     db.query(queryString, queryParams)

@@ -1,6 +1,4 @@
 /*global $, window*/
-
-// Define a global object to store all global variables
 window.appVars = {};
 $(() => {
   const getMaps = function () {
@@ -9,7 +7,9 @@ $(() => {
       url: "/api/maps/",
     })
       .then((mapsFromDB) => {
-        updateUser();
+        if (window.appVars.userID) {
+          updateUser();
+        }
         const maps = mapsFromDB.maps;
         buildTable(maps);
         // make list of maps available globally
@@ -53,7 +53,7 @@ $(() => {
 
   const buildTable = function (maps) {
     for (let map of maps) {
-      // Makes a new cell in table with map_id as id & map name from DB
+      // Makes a new row in table with map_id as id & map name from DB
       $("#maps").append(`<tr><td id='map_${map.id}'>${map.name}</td>
       ${
         window.appVars.userID
@@ -73,7 +73,6 @@ $(() => {
 
   //click listener on parent of map cells: table id="maps" for load map and delete
   $("#maps").click((event) => {
-    console.log("appvarData;", window.appVars);
     let mapID = Number(event.target.id.match(/(\d+)/)[0]);
 
     if (event.target.id.includes("delete")) {

@@ -3,8 +3,6 @@
 $(() => {
   // Gets the info of the googleMaps obj and will export as mapData
   const getGoogleMap = function () {
-    console.log("appvars", window.appVars);
-    console.log("googlemap", window.googleMap);
     return {
       //setting user_id to mapUserId
       user_id: window.googleMap.mapUserID || window.appVars.userID,
@@ -31,7 +29,6 @@ $(() => {
     $.ajax(params)
       .then(() => {
         for (let point of Object.values(window.points)) {
-          console.log("points from object", point);
           // if point exists update otherwise save new point
           if (point.dbPoint.id) {
             updatePoint(point);
@@ -48,7 +45,7 @@ $(() => {
   // save points to DB, makes sure map_id is a number
   const savePoint = function (pointData) {
     // You have to save point info otherwise save will fail
-    console.log("Points saved to: ", Number(window.googleMap.mapID));
+
     $.ajax({
       url: "/api/points/",
       dataType: "text",
@@ -62,6 +59,7 @@ $(() => {
         type: "point",
         rating: pointData.dbPoint.rating,
         map_id: Number(window.googleMap.mapID),
+        user_id: window.appVars.userID,
       },
     })
       .then(() => {})

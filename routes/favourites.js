@@ -11,9 +11,7 @@ module.exports = (db) => {
 VALUES ($1, $2)
 RETURNING *;`;
     const queryParams = Object.values(req.body);
-    console.log(queryParams);
     queryParams.push(req.params.user_id);
-    console.log(queryParams);
     db.query(queryString, queryParams)
       .then((data) => {
         const map = data.rows;
@@ -30,9 +28,7 @@ RETURNING *;`;
     RETURNING *;
     `;
     const queryParams = Object.values(req.body);
-    console.log(queryParams);
     queryParams.push(req.params.user_id);
-    console.log(queryParams);
 
     db.query(queryString, queryParams)
       .then((data) => {

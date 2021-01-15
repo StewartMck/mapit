@@ -14,9 +14,6 @@ $(() => {
 
     window.points[window.counter] = point;
 
-    console.log("points:", window.points);
-    console.log("point:", point);
-
     // every point has an id and is passed into the showMarkerInfo when right click
     point.addListener("rightclick", () => {
       showMarkerInfo(dbPoint, point.id);
@@ -73,9 +70,7 @@ $(() => {
       .find("#point_rating")
       .val();
 
-    console.log(window.points[pointNumber].dbPoint);
     window.infoWindow.close();
-    console.log("points after save:", window.points);
   };
 
   window.addPoint = addPoint;

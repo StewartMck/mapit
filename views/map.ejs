@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
-    <title>Home Page</title>
+    <title>MAPit</title>
 
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -30,6 +30,16 @@
       defer
     ></script>
 
+    <!-- Get UserID -->
+    <script>
+      const userID = <%- userID %>;
+
+        $(()=>{
+          window.appVars = {};
+        window.appVars.userID = userID;
+        })
+    </script>
+
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/load_map.js"></script>
@@ -40,13 +50,7 @@
     <script type="text/javascript" src="/scripts/map_filter.js"></script>
 
     <script type="text/javascript" src="/scripts/map_filter.js"></script>
-    <!-- Testing Google Maps API -->
   </head>
-  <script>
-    // set UserID to appVars Obj
-    window.appVars = { userID: <%= userID %> };
-    console.log("appvars", window.appVars);
-  </script>
   <body>
     <main class="container">
       <div class="left">

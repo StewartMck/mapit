@@ -62,8 +62,6 @@ app.use("/api/favourites", favouriteRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const userID = req.session.user_id;
-  // store in app.locals - which will be a global template var available in all pages without explicitly sending
-  app.locals.userID = userID;
 
   //checking if user is logged in
   if (!userID) {
@@ -71,7 +69,7 @@ app.get("/", (req, res) => {
     return;
   }
 
-  res.render("map");
+  res.render("map", { userID });
 });
 
 //login where it sets a cookie by user_id
@@ -95,7 +93,6 @@ app.get("/user", (req, res) => {
   const queryParams = [userID];
   db.query(queryString, queryParams).then((data) => {
     const templateVars = data.rows[0];
-    console.log("templateVars", templateVars);
     res.render("user", templateVars);
   });
 });

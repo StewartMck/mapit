@@ -8,7 +8,6 @@ $(() => {
       url: `/api/users/${window.appVars.userID}`,
     })
       .then((userData) => {
-        console.log(userData);
         filterTable(userData.userData, event);
       })
       .catch((err) => {

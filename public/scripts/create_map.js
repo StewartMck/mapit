@@ -27,7 +27,6 @@ $(() => {
   /* mapID = checks global maps obj (app.js) for last id and uses the next one as the new maps id */
   const buildUserMap = function (position) {
     getNextMapID().then((mapID) => {
-      console.log("mapID to use", mapID);
       const homeCoords = new google.maps.LatLng(
         position.coords.latitude,
         position.coords.longitude
@@ -39,7 +38,6 @@ $(() => {
         mapID: mapID ? mapID : 1,
         userCreated: true,
       });
-      console.log("NEW MAP: Current mapID", window.googleMap.mapID);
       const infoWindow = new google.maps.InfoWindow();
       infoWindow.setPosition(homeCoords);
       infoWindow.setContent("You are here.");
@@ -50,7 +48,6 @@ $(() => {
   // default map when user does not have location: 'boneyard'
   const buildDefaultMap = function () {
     getNextMapID().then((mapID) => {
-      console.log("mapID to use", mapID);
       initMap({
         center: new google.maps.LatLng(32.155573819618716, -110.82893675561328),
         zoom: 16,

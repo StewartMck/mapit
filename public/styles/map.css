@@ -122,6 +122,10 @@ td {
   margin-top: 3%;
 }
 
+#title:focus {
+  outline: none;
+}
+
 .btn {
   background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
