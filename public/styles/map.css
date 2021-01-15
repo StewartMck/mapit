@@ -3,8 +3,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: #D2482C;
-  font-family: 'Big Shoulders Stencil Text', cursive;
+  color: #d2482c;
+  font-family: "Big Shoulders Stencil Text", cursive;
 }
 
 .container {
@@ -17,8 +17,7 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   background: #000000e0;
-  font-family: 'Big Shoulders Stencil Text', cursive;
-
+  font-family: "Big Shoulders Stencil Text", cursive;
 }
 
 .left {
@@ -32,8 +31,7 @@ body {
   height: 15%;
   display: flex;
   justify-content: center;
-  color: #D2482C
-
+  color: #d2482c;
 }
 
 .mapName header h1 {
@@ -66,15 +64,15 @@ body {
   height: 720px;
   margin-top: 2%;
   border-radius: 25px;
-
 }
 
 /* .table {
   border: 1px solid black;
 } */
 
-table, th {
-  border-bottom: 1px solid #D2482C;
+table,
+th {
+  border-bottom: 1px solid #d2482c;
   width: 80%;
   font-size: large;
   color: white;
@@ -82,15 +80,17 @@ table, th {
   font-size: 20px;
 }
 
-th, td {
+th,
+td {
   text-align: center;
-  padding:4%;
+  padding: 4%;
 }
-.left input[type=text] {
+.left input[type="text"] {
   padding: 6px;
   border: none;
   margin-right: 16px;
   font-size: 17px;
+  width: 20em;
 }
 
 .features {
@@ -103,7 +103,7 @@ th, td {
 
 .features input {
   border-radius: 15px;
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .profile {
@@ -112,27 +112,24 @@ th, td {
 }
 
 #title {
-  background: #D2482C;
+  background: #d2482c;
   color: white;
-  margin-top: 3%
+  margin-top: 3%;
 }
 
-
-
 .btn {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   border-radius: 10px;
-
 }
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
 }
 
 .right h3 {
@@ -140,7 +137,7 @@ th, td {
 }
 
 #goprofile {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 14px; /* Some padding */
@@ -153,27 +150,26 @@ th, td {
 
 /* Darker background on mouse-over */
 #goprofile:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
 }
 
 #create_map {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 4px 6px; /* Some padding */
   font-size: 18px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
   border-radius: 10px;
-
 }
 
 /* Darker background on mouse-over */
 #create_map:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
 }
 
 #save_map {
-  background-color: #D2482C; /* Blue background */
+  background-color: #d2482c; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 4px 6px; /* Some padding */
@@ -184,5 +180,5 @@ th, td {
 
 /* Darker background on mouse-over */
 #save_map:hover {
-  background-color:  #eb2801;;
+  background-color: #eb2801;
 }
