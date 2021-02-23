@@ -1,5 +1,3 @@
-!["Interview Scheduler Logo"](public/images/globe_pin.png)
-
 ### MAPit is an application that allows users to view, create and share maps with custom points.
 
 <br>
